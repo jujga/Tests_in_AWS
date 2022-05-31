@@ -10,20 +10,16 @@ pipeline {
                         sh 'curl -SL https://github.com/docker/compose/releases/download/v2.5.0/docker-compose-linux-x86_64 -o /usr/local/bin/docker-compose'
                         sh 'chmod +x /usr/local/bin/docker-compose'
                         // alternative run: docker-compose -f pipeline/containers/pseudo_compose/docker-compose.yml up --abort-on-container-exit --exit-code-from py_runner
-                        sh 'docker-compose -f pipeline/containers/pseudo_compose/docker-compose.yml run --rm py_runner'
+                        sh 'docker-compose -f pipeline/containers/compose/docker-compose.yml run --rm py_runner'
                         }
                         }
                     }
                 stage('API tests in the python container') {
                     steps {
                         script {
-
                         sh 'docker build -f ./pipeline/containers/python_api/Dockerfile -t pytest_runner .'
-
-                        //sh 'docker run --rm --mount type=bind,src=' + (pwd) + ',target=/tests_project pytest_runner'
                         sh "docker run --rm -v common-volume:/tests_project pytest_runner"
-                        }
-
+                            }
                         }
                     }
                 }
@@ -35,14 +31,13 @@ pipeline {
         always {
 
             script {
-                        allure([
-                                //allure commandline: 'allure',
-                                includeProperties: false,
-                                jdk: '',
-                                results: [[path: 'test_results']]
-                        ])
+                    allure([
+                            includeProperties: false,
+                            jdk: '',
+                            results: [[path: 'test_results']]
+                    ])
+                    sh 'docker-compose -f pipeline/containers/compose/docker-compose.yml down'
                     }
-            sh 'docker-compose -f pipeline/containers/pseudo_compose/docker-compose.yml down'
             }
         }
 }

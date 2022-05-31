@@ -1,5 +1,5 @@
 # created by virtualenv automatically
-.pytest_cache
+pytest_cache
 .idea
 venv
 *.log

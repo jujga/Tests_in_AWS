@@ -1,0 +1,21 @@
+version: "3.8"
+
+services:
+
+  py_runner:
+    build: ./python_runner
+    depends_on:
+      - linux_chrome
+
+    volumes:
+      - common-volume:/tests_project/
+
+  linux_chrome:
+    image: selenium/standalone-chrome:3.141.59-20210607
+
+    shm_size: '2gb'
+    ports:
+           - 4444:4444
+volumes:
+  common-volume:
+    external: true

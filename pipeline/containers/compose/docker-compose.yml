@@ -5,7 +5,7 @@ services:
   py_runner:
     build:
        context: ./../../..
-       dockerfile: pipeline/containers/pseudo_compose/python_runner/Dockerfile
+       dockerfile: pipeline/containers/compose/python_runner/Dockerfile
     depends_on:
       - linux_chrome
 

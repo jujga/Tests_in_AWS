@@ -3,7 +3,9 @@ version: "3.8"
 services:
 
   py_runner:
-    build: ./python_runner
+    build:
+       context: ./../../..
+       dockerfile: pipeline/containers/pseudo_compose/python_runner/Dockerfile
     depends_on:
       - linux_chrome
 

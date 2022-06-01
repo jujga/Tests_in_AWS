@@ -15,7 +15,6 @@ from tests.common import do_allure_screenshot
 def driver(request):
     options = webdriver.ChromeOptions()
     options.add_experimental_option('excludeSwitches', ['enable-logging'])
-    options.timeouts. =
     # options.headless = True
     # options.add_argument('start-maximized')
     # options.add_argument('--disable-gpu')

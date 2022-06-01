@@ -14,18 +14,18 @@ pipeline {
                         }
                         }
                     }
-                stage('API tests in the python container') {
-                    steps {
-                        script {
-
-                        sh 'docker build -f ./pipeline/containers/python_api/Dockerfile -t pytest_runner .'
-
-                        //sh 'docker run --rm --mount type=bind,src=' + (pwd) + ',target=/tests_project pytest_runner'
-                        sh "docker run --rm -v common-volume:/tests_project pytest_runner"
-                        }
-
-                        }
-                    }
+//                stage('API tests in the python container') {
+//                    steps {
+//                        script {
+//
+//                        sh 'docker build -f ./pipeline/containers/python_api/Dockerfile -t pytest_runner .'
+//
+//                        //sh 'docker run --rm --mount type=bind,src=' + (pwd) + ',target=/tests_project pytest_runner'
+//                        sh "docker run --rm -v common-volume:/tests_project pytest_runner"
+//                        }
+//
+//                        }
+//                    }
                 }
 
             }

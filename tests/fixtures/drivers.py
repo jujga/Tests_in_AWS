@@ -18,12 +18,14 @@ def driver(request):
     # options.headless = True
     # options.add_argument('start-maximized')
     # options.add_argument('--disable-gpu')
+    from time import sleep
+    sleep(15)
     driver = webdriver.Remote(command_executor='http://linux_chrome:4444/wd/hub', options=options) \
         if request.config.getoption('--start_from_jenkins')\
         else webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
     driver.implicitly_wait(5)
     from time import sleep
-    # sleep(5)
+    sleep(5)
     DriverForAllure.driver = driver
     driver.maximize_window()
     # driver.set_window_size(1920, 1080)

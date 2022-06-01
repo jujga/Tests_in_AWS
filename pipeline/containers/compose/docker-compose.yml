@@ -11,7 +11,7 @@ services:
       - common-volume:/tests_project/
 
   linux_chrome:
-    image: selenium/standalone-chrome:100.0.4896.75-chromedriver-100.0.4896.60-20220405  # :3.141.59-20210607
+    image: selenium/standalone-chrome:96.0.4664.93-20211209  # :3.141.59-20210607
 
     shm_size: '2gb'
     ports:

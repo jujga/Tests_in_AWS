@@ -23,7 +23,7 @@ def driver(request):
         else webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
     driver.implicitly_wait(5)
     from time import sleep
-    sleep(1)
+    sleep(5)
     DriverForAllure.driver = driver
     driver.maximize_window()
     # driver.set_window_size(1920, 1080)

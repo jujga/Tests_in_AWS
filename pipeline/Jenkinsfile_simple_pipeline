@@ -2,10 +2,12 @@ pipeline {
     agent any
     stages {
         stage('Run tests using docker') {
-            withPythonEnv('python3') {
-                sh 'pip install pytest'
-                sh 'pytest mytest.py'
-    }
+            steps {
+                withPythonEnv('python3') {
+                    sh 'pip install pytest'
+                    sh 'pytest mytest.py'
+                }
+            }
         }
 }
 
